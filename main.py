@@ -222,3 +222,19 @@ def o365enum_msoloauth(usernames, url="https://login.microsoft.com"):
         print("{},{}".format(username, state))
 
 
+def o365enum(usernames, method="activesync"):
+    '''
+    Enumerate usernames using an available method
+    '''
+    print("username,valid")
+    if method == "activesync":
+        o365enum_activesync(usernames)
+    elif method == "autodiscover":
+        o365enum_autodiscover(usernames)
+    elif method == "office.com":
+        o365enum_office(usernames)
+    elif method == "msol":
+        o365enum_msoloauth(usernames)
+    else:
+        raise Exception("Invalid method provided.")
+
